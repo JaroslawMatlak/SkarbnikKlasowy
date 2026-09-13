@@ -1,0 +1,207 @@
+﻿<Window x:Class="SkarbnikKlasowy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Skarbnik klasowy"
+        Width="900"
+        Height="650"
+        MinWidth="700"
+        MinHeight="500"
+        WindowStartupLocation="CenterScreen">
+
+	<Grid Background="#F4F5F7">
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+
+		<!-- Nagłówek -->
+		<StackPanel Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    Margin="0,45,0,30">
+
+			<TextBlock Text="SKARBNIK KLASOWY"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="#202124"
+                       HorizontalAlignment="Center"/>
+
+			<TextBlock Text="Panel główny"
+                       FontSize="16"
+                       Foreground="#70757A"
+                       HorizontalAlignment="Center"
+                       Margin="0,8,0,0"/>
+
+		</StackPanel>
+
+
+		<!-- Kafelki -->
+		<UniformGrid Grid.Row="1"
+                     Columns="3"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Width="750"
+                     Height="380">
+
+			<!-- Uczniowie -->
+			<Button Margin="10"
+                    Background="White"
+                    BorderBrush="#DDDDDD"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    Click="StudentsButton_Click">
+
+				<StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+					<TextBlock Text="👥"
+                               FontSize="48"
+                               HorizontalAlignment="Center"/>
+
+					<TextBlock Text="Uczniowie"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               Foreground="#202124"
+                               HorizontalAlignment="Center"
+                               Margin="0,15,0,0"/>
+
+				</StackPanel>
+			</Button>
+
+
+			<!-- Tytuły -->
+			<Button Margin="10"
+                    Background="White"
+                    BorderBrush="#DDDDDD"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    Click="GoalsButton_Click">
+
+				<StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+					<TextBlock Text="📝"
+                               FontSize="48"
+                               HorizontalAlignment="Center"/>
+
+					<TextBlock Text="Tytuły"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               Foreground="#202124"
+                               HorizontalAlignment="Center"
+                               Margin="0,15,0,0"/>
+
+				</StackPanel>
+			</Button>
+
+
+			<!-- Płatności -->
+			<Button Margin="10"
+                    Background="White"
+                    BorderBrush="#DDDDDD"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    Click="PaymentsButton_Click">
+
+				<StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+					<TextBlock Text="💰"
+                               FontSize="48"
+                               HorizontalAlignment="Center"/>
+
+					<TextBlock Text="Płatności"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               Foreground="#202124"
+                               HorizontalAlignment="Center"
+                               Margin="0,15,0,0"/>
+
+				</StackPanel>
+			</Button>
+
+
+			<!-- Eksport raportu -->
+			<Button Margin="10"
+                    Background="White"
+                    BorderBrush="#DDDDDD"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    Click="ExportReport_Click">
+
+				<StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+					<TextBlock Text="📊"
+                               FontSize="48"
+                               HorizontalAlignment="Center"/>
+
+					<TextBlock Text="Eksportuj raport"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               Foreground="#202124"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,15,0,0"/>
+
+				</StackPanel>
+			</Button>
+
+
+			<!-- Modyfikatory -->
+			<Button Margin="10"
+                    Background="White"
+                    BorderBrush="#DDDDDD"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    Click="GoalModifiers_Click">
+
+				<StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+					<TextBlock Text="⚙"
+                               FontSize="48"
+                               HorizontalAlignment="Center"/>
+
+					<TextBlock Text="Modyfikatory"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               Foreground="#202124"
+                               HorizontalAlignment="Center"
+                               Margin="0,15,0,0"/>
+
+				</StackPanel>
+			</Button>
+
+			<Button Margin="10"
+        Background="White"
+        BorderBrush="#DDDDDD"
+        BorderThickness="1"
+        Cursor="Hand"
+        Click="OverpaymentsButton_Click">
+
+				<StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+					<TextBlock Text="💸"
+                   FontSize="48"
+                   HorizontalAlignment="Center"/>
+
+					<TextBlock Text="Nadpłaty"
+                   FontSize="22"
+                   FontWeight="SemiBold"
+                   Foreground="#202124"
+                   HorizontalAlignment="Center"
+                   Margin="0,15,0,0"/>
+
+				</StackPanel>
+
+			</Button>
+
+		</UniformGrid>
+
+	</Grid>
+
+</Window>

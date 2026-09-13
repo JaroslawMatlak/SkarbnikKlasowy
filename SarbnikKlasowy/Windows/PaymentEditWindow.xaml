@@ -1,0 +1,176 @@
+﻿<Window x:Class="SkarbnikKlasowy.Windows.PaymentEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Przypisz płatność"
+        Width="550"
+        Height="600"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+
+	<Grid Background="#F4F5F7"
+          Margin="25">
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0"
+                   Text="Przypisz płatność"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   Foreground="#202124"
+                   Margin="0,0,0,25"/>
+
+		<!-- Data -->
+		<Grid Grid.Row="1"
+              Margin="0,0,0,12">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="110"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0"
+                       Text="Data:"
+                       FontSize="16"
+                       VerticalAlignment="Center"/>
+
+			<TextBlock x:Name="DateTextBlock"
+                       Grid.Column="1"
+                       FontSize="16"
+                       VerticalAlignment="Center"/>
+
+		</Grid>
+
+		<!-- Kwota -->
+		<Grid Grid.Row="2"
+              Margin="0,0,0,12">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="110"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0"
+                       Text="Kwota:"
+                       FontSize="16"
+                       VerticalAlignment="Center"/>
+
+			<TextBlock x:Name="AmountTextBlock"
+                       Grid.Column="1"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       VerticalAlignment="Center"/>
+
+		</Grid>
+
+		<!-- Opis -->
+		<Grid Grid.Row="3"
+              Margin="0,0,0,20">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="110"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0"
+                       Text="Opis:"
+                       FontSize="16"
+                       VerticalAlignment="Top"/>
+
+			<TextBlock x:Name="DescriptionTextBlock"
+                       Grid.Column="1"
+                       FontSize="16"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Top"/>
+
+		</Grid>
+
+		<Grid Grid.Row="4"
+              Margin="0,0,0,20">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="110"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0"
+                       Text="Nadawca:"
+                       FontSize="16"
+                       VerticalAlignment="Top"/>
+
+			<TextBlock x:Name="SenderTextBlock"
+                       Grid.Column="1"
+                       FontSize="16"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Top"/>
+
+		</Grid>
+
+		<!-- Uczeń -->
+		<Grid Grid.Row="5" Margin="0,0,0,12">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="110"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0"
+               Text="Uczeń:"
+               FontSize="16"
+               VerticalAlignment="Center"/>
+
+			<ComboBox x:Name="StudentComboBox"
+              Grid.Column="1"
+              Height="32"
+              FontSize="15"
+              DisplayMemberPath="FullName"/>
+		</Grid>
+
+		<!-- Tytuł -->
+		<Grid Grid.Row="6" Margin="0,0,0,20">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="110"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0"
+               Text="Tytuł:"
+               FontSize="16"
+               VerticalAlignment="Center"/>
+
+			<ComboBox x:Name="GoalComboBox"
+              Grid.Column="1"
+              Height="32"
+              FontSize="15"
+              DisplayMemberPath="Name"/>
+		</Grid>
+
+		<!-- Przyciski -->
+		<StackPanel Grid.Row="7"
+            Orientation="Horizontal"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom">
+
+			<Button Content="Anuluj"
+            Width="100"
+            Height="38"
+            Margin="0,0,10,0"
+            Click="CancelButton_Click"/>
+
+			<Button Content="Zapisz"
+            Width="100"
+            Height="38"
+            IsDefault="True"
+            Click="SaveButton_Click"/>
+		</StackPanel>
+
+	</Grid>
+
+</Window>

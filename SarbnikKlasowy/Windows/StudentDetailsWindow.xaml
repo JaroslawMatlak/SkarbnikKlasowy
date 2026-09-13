@@ -1,0 +1,186 @@
+﻿<Window x:Class="SkarbnikKlasowy.Windows.StudentDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Uczeń"
+        Width="850"
+        Height="600"
+        MinWidth="700"
+        MinHeight="500"
+        WindowStartupLocation="CenterOwner">
+
+	<Grid Background="#F4F5F7"
+          Margin="25">
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- Dane ucznia -->
+
+		<StackPanel Grid.Row="0"
+                    Margin="0,0,0,20">
+
+			<TextBlock x:Name="StudentNameTextBlock"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="#202124"/>
+
+			<TextBlock x:Name="StudentSummaryTextBlock"
+                       FontSize="16"
+                       Foreground="#555555"
+                       Margin="0,10,0,0"/>
+
+		</StackPanel>
+
+		<!-- Podsumowanie -->
+
+		<Grid Grid.Row="1"
+              Margin="0,0,0,20">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<Border Grid.Column="0"
+                    Background="White"
+                    BorderBrush="#DDDDDD"
+                    BorderThickness="1"
+                    CornerRadius="6"
+                    Margin="0,0,8,0"
+                    Padding="15">
+
+				<StackPanel>
+					<TextBlock Text="Suma wpłat"
+                               FontSize="14"
+                               Foreground="#666666"/>
+
+					<TextBlock x:Name="TotalPaymentsTextBlock"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               Foreground="#202124"
+                               Margin="0,5,0,0"/>
+				</StackPanel>
+
+			</Border>
+
+			<Border Grid.Column="1"
+                    Background="White"
+                    BorderBrush="#DDDDDD"
+                    BorderThickness="1"
+                    CornerRadius="6"
+                    Margin="8,0,0,0"
+                    Padding="15">
+
+				<StackPanel>
+					<TextBlock Text="Nieobsłużone nadpłaty"
+                               FontSize="14"
+                               Foreground="#666666"/>
+
+					<TextBlock x:Name="OverpaymentsTextBlock"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               Foreground="#202124"
+                               Margin="0,5,0,0"/>
+				</StackPanel>
+
+			</Border>
+
+		</Grid>
+
+		<!-- Cele -->
+
+		<Border Grid.Row="2"
+                Background="White"
+                BorderBrush="#DDDDDD"
+                BorderThickness="1"
+                CornerRadius="6">
+
+			<DataGrid x:Name="GoalsGrid"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      BorderThickness="0"
+                      Background="White"
+                      RowHeight="36">
+
+				<DataGrid.Columns>
+
+					<DataGridTextColumn Header="Cel"
+                                        Binding="{Binding GoalName}"
+                                        Width="*"/>
+
+					<DataGridTextColumn Header="Wymagane"
+                                        Binding="{Binding RequiredDisplay}"
+                                        Width="130"/>
+
+					<DataGridTextColumn Header="Wpłacono"
+                                        Binding="{Binding PaidDisplay}"
+                                        Width="130"/>
+
+					<DataGridTemplateColumn Header="Status"
+                                            Width="160">
+
+						<DataGridTemplateColumn.CellTemplate>
+
+							<DataTemplate>
+
+								<TextBlock Text="{Binding StatusDisplay}"
+                                           FontSize="15"
+                                           FontWeight="SemiBold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center">
+
+									<TextBlock.Style>
+
+										<Style TargetType="TextBlock">
+
+											<Setter Property="Foreground"
+                                                    Value="Red"/>
+
+											<Style.Triggers>
+
+												<DataTrigger Binding="{Binding IsPaid}"
+                                                             Value="True">
+
+													<Setter Property="Foreground"
+                                                            Value="Green"/>
+
+												</DataTrigger>
+
+											</Style.Triggers>
+
+										</Style>
+
+									</TextBlock.Style>
+
+								</TextBlock>
+
+							</DataTemplate>
+
+						</DataGridTemplateColumn.CellTemplate>
+
+					</DataGridTemplateColumn>
+
+				</DataGrid.Columns>
+
+			</DataGrid>
+
+		</Border>
+
+		<!-- Zamknij -->
+
+		<Button Grid.Row="3"
+                Content="Zamknij"
+                Width="110"
+                Height="40"
+                HorizontalAlignment="Right"
+                Margin="0,15,0,0"
+                Click="CloseButton_Click"/>
+
+	</Grid>
+
+</Window>

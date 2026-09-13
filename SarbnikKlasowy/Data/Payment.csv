@@ -1,0 +1,4 @@
+Id,Amount,Name,Sender,PaymentDate,StudentId,GoalId
+1,25.00,Ksero Krzysio,John Doe,2026-09-10T14:32:00,3,2
+2,50.00,Wycieczka Ola,Jane Smith,2026-09-11T09:15:00,0,0
+3,20.00,Ksero Kasia,Bob Johnson,2026-09-11T10:20:00,4,0
