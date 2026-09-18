@@ -74,8 +74,7 @@ namespace SkarbnikKlasowy.Services
 						.Sum(x => x.Amount);
 
 					// -----------------------------
-					// Kwota przekierowana
-					// z innych tytułów NA ten tytuł
+					// Przekierowania NA ten cel
 					// -----------------------------
 
 					double redirectedIn = overpayments
@@ -88,8 +87,7 @@ namespace SkarbnikKlasowy.Services
 						.Sum(x => x.Amount);
 
 					// -----------------------------
-					// Kwota przekierowana
-					// Z tego tytułu na inne miejsce
+					// Przekierowania Z tego celu
 					// -----------------------------
 
 					double redirectedOut = overpayments
@@ -102,6 +100,7 @@ namespace SkarbnikKlasowy.Services
 
 					// -----------------------------
 					// Wymagana kwota
+					// Uwzględnia modyfikator
 					// -----------------------------
 
 					double requiredAmount =
@@ -111,14 +110,23 @@ namespace SkarbnikKlasowy.Services
 							modifiers);
 
 					// -----------------------------
-					// Rzeczywisty bilans celu
+					// Rzeczywista kwota przypisana
+					// do celu
+					// -----------------------------
+
+					double actualAmount =
+						paid +
+						redirectedIn -
+						redirectedOut;
+
+					// -----------------------------
+					// Różnica względem wymaganej
+					// kwoty
 					// -----------------------------
 
 					double difference =
-						paid +
-						redirectedIn -
-						requiredAmount -
-						redirectedOut;
+						actualAmount -
+						requiredAmount;
 
 					// -----------------------------
 					// Status celu
@@ -128,30 +136,33 @@ namespace SkarbnikKlasowy.Services
 
 					if (difference >= 0)
 					{
-						cell.Value = $"{paid-difference}✓";
+						// Wyświetlamy rzeczywistą kwotę
+						// przypisaną do celu
+						cell.Value =
+							$"{requiredAmount:F2}✓";
 
-						// Zielone tło
 						cell.Style.Fill.BackgroundColor =
 							XLColor.LightGreen;
 
-						// Zielony tekst
 						cell.Style.Font.FontColor =
 							XLColor.Green;
 
 						cell.Style.Font.Bold = true;
 
-						// Tylko rzeczywista pozostała nadpłata
+						// Nadpłata pozostająca po opłaceniu celu
 						totalOverpayment += difference;
 					}
 					else
 					{
-						cell.Value = $"{paid}✗";
+						// Cel nie został opłacony.
+						// Wyświetlamy rzeczywistą kwotę,
+						// która pozostała na celu.
+						cell.Value =
+							$"{actualAmount:F2}✗";
 
-						// Czerwone tło
 						cell.Style.Fill.BackgroundColor =
 							XLColor.LightPink;
 
-						// Czerwony tekst
 						cell.Style.Font.FontColor =
 							XLColor.Red;
 
@@ -174,7 +185,7 @@ namespace SkarbnikKlasowy.Services
 
 				worksheet.Cell(row, 2)
 					.Style.NumberFormat.Format =
-					"#,##0.00 \"zł\"";
+					"#,##0.00";
 			}
 
 			// -----------------------------
